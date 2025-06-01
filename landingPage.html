@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskTracker - App</title>
+</head>
+<body class="center">
+    <section class="center">
+        <h1>🎯 T’as des idées plein la tête, mais rien ne se concrétise ?</h1>
+        <div class="slider-container">
+            <p class="label-prototype">📸 Prototype (maquette)</p>
+            <img id="slider" src="">
+        </div>
+        <div class="div-btn-slider">
+            <button id="precedent">&lt;</button>
+            <button id="suivant">&gt;</button>
+        </div>
+        <p>💬 Cette app t’aide à passer <strong>du scroll à l’action</strong>, pour que tes projets voient enfin le jour.</p>
+        <a href=""><strong>🚀 Sois le premier à tester l'app</strong></a>
+        <h4 class="left">💡 Pourquoi cette app ?</h4>
+        <ul>
+            <li><strong>Clarté instantanée</strong><br>Planifie chaque tâche avec une date, une heure et une durée. Pas de flou, tu sais quoi faire et quand.</li>
+            <li><strong>Objectifs en ligne de mire</strong><br>Crée des projets concrets, découpe-les en petites étapes, et avance vraiment.</li>
+            <li><strong>Statistiques motivante</strong>s<br>Visualise ton temps : études, sport, projets, repos… et rééquilibre ta journée.</li>
+            <li><strong>Progression visible</strong><br>Compare ta semaine à la précédente. Tu veux avancer ? Tu vas le voir noir sur blanc.</li>
+        </ul>
+        <h4>🔥 Marre de commencer des trucs… et de jamais les finir ?</h4>
+        <p>💬 Cette app t’aide à aller au bout de tes projets, un jour après l’autre, sans pression.</p>
+        <a href=""><strong>✅ Teste-la avant tout le monde</strong></a>
+    </section>
+
+    <footer>
+        <p>À propos</p>
+        <ul>
+            <li>📧 contact@tonapp.fr</li>
+            <li>🔗 Mentions légales | Politique de confidentialité</li>
+            <li>💬 Suis-nous sur Instagram</li>
+        </ul>
+    </footer>
+</body>
+</html>
+
+<script>
+
+const MaquetteImgs = ["images/Capture-Acceuil.png", "images/Capture-Historique.png", "images/Capture-MesTaches.png"]
+
+let index = 0;
+
+const changeImg = () => {
+    document.getElementById("slider").src = MaquetteImgs[index];
+};
+
+changeImg(index);
+
+document.getElementById("suivant").addEventListener("click", function () {
+    if(index>=MaquetteImgs.length-1) { index = 0;}
+    else { index +=1; }
+    changeImg();
+});
+
+document.getElementById("precedent").addEventListener("click", function () {
+    if(index<=0) { index = MaquetteImgs.length-1; }
+    else { index -=1; }
+    changeImg();
+});
+
+</script>
+
+<style>
+
+* { padding: 0; margin: 0; box-sizing: border-box; color: #000000; }
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+section {
+    width: 90%;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+section > *:not(ul) {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    background: #ffdc4a;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+.left {
+    align-self: flex-start;
+}
+
+img { width: 100%; }
+
+.div-btn-slider {
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.div-btn-slider button {
+    background-color: #ffdc4a;
+    border: none;
+    color: #000;
+    font-size: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Text au dessus de l'image */
+.slider-container {
+    margin-top: 17px;
+    position: relative;
+    width: 60%;
+}
+.label-prototype {
+    position: absolute; top: 0; right: 0;
+    background-color: red;
+    font-size: 11px;
+    margin-top: -17px;
+}
+
+</style>
